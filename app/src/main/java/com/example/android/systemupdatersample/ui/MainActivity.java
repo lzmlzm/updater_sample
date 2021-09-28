@@ -89,15 +89,20 @@ public class MainActivity extends Activity {
         this.mTextViewEngineErrorCode = findViewById(R.id.textViewEngineErrorCode);
         this.mTextViewUpdateInfo = findViewById(R.id.textViewUpdateInfo);
         this.mButtonSwitchSlot = findViewById(R.id.buttonSwitchSlot);
-
+        //显示config json文件的路径为
+        ///data/user/0/com.example.android.systemupdatersample/files/configs/
         this.mTextViewConfigsDirHint.setText(UpdateConfigs.getConfigsRoot(this));
-
+        //ui状态重置
         uiResetWidgets();
+        //加载配置文件
         loadUpdateConfigs();
-
+        //设置状态改变的回调
         this.mUpdateManager.setOnStateChangeCallback(this::onUpdaterStateChange);
+        //状态回调
         this.mUpdateManager.setOnEngineStatusUpdateCallback(this::onEngineStatusUpdate);
+        //完成回调
         this.mUpdateManager.setOnEngineCompleteCallback(this::onEnginePayloadApplicationComplete);
+        //更新进度回调
         this.mUpdateManager.setOnProgressUpdateCallback(this::onProgressUpdate);
     }
 
@@ -382,6 +387,7 @@ public class MainActivity extends Activity {
      * loads json configurations from configs dir that is defined in {@link UpdateConfigs}.
      */
     private void loadUpdateConfigs() {
+        //从config目录下找到json文件，json添加到mconfig实例对象并返回
         mConfigs = UpdateConfigs.getUpdateConfigs(this);
         loadConfigsToSpinner(mConfigs);
     }

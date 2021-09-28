@@ -34,7 +34,7 @@ import java.util.Optional;
  * Utility class for working with json update configurations.
  */
 public final class UpdateConfigs {
-
+    //config文件的目录
     public static final String UPDATE_CONFIGS_ROOT = "configs/";
 
     /**
@@ -59,6 +59,7 @@ public final class UpdateConfigs {
      * @param context application context
      * @return list of configs from directory {@link UpdateConfigs#getConfigsRoot}
      */
+    //json解析
     public static List<UpdateConfig> getUpdateConfigs(Context context) {
         File root = new File(getConfigsRoot(context));
         ArrayList<UpdateConfig> configs = new ArrayList<>();
